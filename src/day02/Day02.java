@@ -43,11 +43,6 @@ public class Day02 extends AdventOfCodeTemplate {
 
             return true;
         }
-
-        int getPower() {
-            return red * green * blue;
-        }
-
     }
 
     public static void main(String[] args) {
@@ -152,7 +147,10 @@ public class Day02 extends AdventOfCodeTemplate {
                 minBag.green = Math.max(minBag.green, round.green);
             }
 
-            total += minBag.getPower();
+            // Power = red * blue * green
+            int power = minBag.red * minBag.blue * minBag.green;
+
+            total += power;
         }
 
         System.out.println("Total power " + total);
