@@ -5,53 +5,53 @@ import java.util.List;
 
 public class TemplateDay extends AdventOfCodeTemplate {
 
-	private class DayDataClass {
+    private class DayDataClass {
 
-		DayDataClass(String input) {
+        DayDataClass(String input) {
 
-			// Parse the input string for one line into some object
-		}
-	}
+            // Parse the input string for one line into some object
+        }
+    }
 
-	public static void main(String[] args) {
-		new TemplateDay().solve();
-	}
+    public static void main(String[] args) {
+        new TemplateDay().solve();
+    }
 
-	/** List of objects created by parsing the input */
-	private List<DayDataClass> dayData = new ArrayList<>();
+    /** List of objects created by parsing the input */
+    private List<DayDataClass> dayData = new ArrayList<>();
 
-	@Override
-	public void readInput() {
+    @Override
+    public void readInput() {
 
-		// Read the input until a blank line is encountered
-		while (true) {
+        // Read the input until a blank line is encountered
+        while (true) {
 
-			String input = scanner.nextLine();
+            String input = scanner.nextLine();
 
-			if (input.isBlank()) {
-				break;
-			}
+            if (input.isBlank()) {
+                break;
+            }
 
-			dayData.add(new DayDataClass(input));
-		}
-	}
+            dayData.add(new DayDataClass(input));
+        }
+    }
 
-	@Override
-	public void solvePart1() {
+    @Override
+    public void solvePart1() {
 
-		int total = 0;
+        int total = 0;
 
-		for (DayDataClass dayDataClass : dayData) {
+        for (DayDataClass dayDataClass : dayData) {
 
-		}
+        }
 
-		System.out.println("Total " + total);
-	}
+        System.out.println("Total " + total);
+    }
 
-	@Override
-	public void solvePart2() {
+    @Override
+    public void solvePart2() {
 
-		System.out.println("Not yet implemented");
-	}
+        System.out.println("Not yet implemented");
+    }
 
 }

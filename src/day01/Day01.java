@@ -7,53 +7,162 @@ import template.AdventOfCodeTemplate;
 
 public class Day01 extends AdventOfCodeTemplate {
 
-	private class DayDataClass {
+    public static void main(String[] args) {
+        new Day01().solve();
+    }
 
-		DayDataClass(String input) {
+    /** List of objects created by parsing the input */
+    private List<String> inputs = new ArrayList<>();
 
-			// Parse the input string for one line into some object
-		}
-	}
+    @Override
+    public void readInput() {
 
-	public static void main(String[] args) {
-		new Day01().solve();
-	}
+        // Read the input until a blank line is encountered
+        while (true) {
 
-	/** List of objects created by parsing the input */
-	private List<DayDataClass> dayData = new ArrayList<>();
+            String input = scanner.nextLine();
 
-	@Override
-	public void readInput() {
+            if (input.isBlank()) {
+                break;
+            }
 
-		// Read the input until a blank line is encountered
-		while (true) {
+            inputs.add(input);
+        }
+    }
 
-			String input = scanner.nextLine();
+    @Override
+    public void solvePart1() {
 
-			if (input.isBlank()) {
-				break;
-			}
+        int total = 0;
 
-			dayData.add(new DayDataClass(input));
-		}
-	}
+        for (String calibrationLine : inputs) {
 
-	@Override
-	public void solvePart1() {
+            char[] calibrationChars = calibrationLine.toCharArray();
 
-		int total = 0;
+            int    firstValue       = 0;
 
-		for (DayDataClass dayDataClass : dayData) {
+            for (int i = 0; i < calibrationChars.length; i++) {
 
-		}
+                int value = getValueAt(i, calibrationChars);
 
-		System.out.println("Total " + total);
-	}
+                if (value >= 0) {
+                    firstValue = value;
+                    break;
+                }
+            }
 
-	@Override
-	public void solvePart2() {
+            int lastValue = 0;
 
-		System.out.println("Not yet implemented");
-	}
+            for (int i = calibrationChars.length - 1; i >= 0; i--) {
 
+                int value = getValueAt(i, calibrationChars);
+
+                if (value >= 0) {
+                    lastValue = value;
+                    break;
+                }
+            }
+
+            total += firstValue * 10 + lastValue;
+        }
+
+        System.out.println("Total " + total);
+    }
+
+    @Override
+    public void solvePart2() {
+
+        int total = 0;
+
+        for (String calibrationLine : inputs) {
+
+            char[] calibrationChars = calibrationLine.toCharArray();
+
+            int    firstValue       = 0;
+
+            for (int i = 0; i < calibrationChars.length; i++) {
+
+                int value = getValueAfter(i, calibrationChars);
+
+                if (value >= 0) {
+                    firstValue = value;
+                    break;
+                }
+            }
+
+            int lastValue = 0;
+
+            for (int i = calibrationChars.length - 1; i >= 0; i--) {
+
+                int value = getValueAfter(i, calibrationChars);
+
+                if (value >= 0) {
+                    lastValue = value;
+                    break;
+                }
+            }
+
+            total += firstValue * 10 + lastValue;
+        }
+
+        System.out.println("Total " + total);
+    }
+
+    private int getValueAt(int index, char[] chars) {
+
+        char c = chars[index];
+
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        }
+
+        return -1;
+    }
+
+    private int getValueAfter(int index, char[] chars) {
+
+        char c = chars[index];
+
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        }
+
+        // If the character is not a number, then look for a full word
+
+        String s = String.valueOf(chars, index, chars.length - index);
+
+        if (s.startsWith("zero")) {
+            return 0;
+        }
+        if (s.startsWith("one")) {
+            return 1;
+        }
+        if (s.startsWith("two")) {
+            return 2;
+        }
+        if (s.startsWith("three")) {
+            return 3;
+        }
+        if (s.startsWith("four")) {
+            return 4;
+        }
+        if (s.startsWith("five")) {
+            return 5;
+        }
+        if (s.startsWith("six")) {
+            return 6;
+        }
+        if (s.startsWith("seven")) {
+            return 7;
+        }
+        if (s.startsWith("eight")) {
+            return 8;
+        }
+        if (s.startsWith("nine")) {
+            return 9;
+        }
+
+        return -1;
+    }
 }
+
