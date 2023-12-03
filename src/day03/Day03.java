@@ -16,15 +16,15 @@ public class Day03 extends AdventOfCodeTemplate {
     }
 
     /** List of objects created by parsing the input */
-    private List<String> inputs = new ArrayList<>();
+    private char[][] schematic;
 
-    private char[][]     schematic;
-
-    int                  maxRow = 0;
-    int                  maxCol = 0;
+    int              maxRow = 0;
+    int              maxCol = 0;
 
     @Override
     public void readInput() {
+
+        List<String> inputs = new ArrayList<>();
 
         // Read the input until a blank line is encountered
         while (true) {
@@ -188,7 +188,7 @@ public class Day03 extends AdventOfCodeTemplate {
         // look down
         if (gear.row < maxRow - 1) {
 
-            // If the center is a digit, then there is one number above.
+            // If the center is a digit, then there is one number below.
             int value = getNumber(gear.row + 1, gear.col);
 
             if (value != 0) {
