@@ -128,6 +128,9 @@ public class Day03 extends AdventOfCodeTemplate {
 
     private boolean hasAdjacentSymbol(int testRow, int testCol) {
 
+        // Check all rows and cols adjacent to the test row, col
+        // that are within the bounds of the schematic
+
         for (int row = Math.max(0, testRow - 1); row <= Math.min(testRow + 1, maxRow - 1); row++) {
 
             for (int col = Math.max(0, testCol - 1); col <= Math.min(testCol + 1, maxCol - 1); col++) {
@@ -143,9 +146,12 @@ public class Day03 extends AdventOfCodeTemplate {
                     continue;
                 }
 
+                // Adjacent symbol found
                 return true;
             }
         }
+
+        // No adjacent symbol was found
         return false;
     }
 
@@ -273,5 +279,4 @@ public class Day03 extends AdventOfCodeTemplate {
         return Integer.valueOf(
             String.valueOf(schematic[row], startCol, endCol - startCol + 1));
     }
-
 }
