@@ -5,16 +5,16 @@ import java.util.List;
 
 public class TemplateDay extends AdventOfCodeTemplate {
 
+    public static void main(String[] args) {
+        new TemplateDay().solve();
+    }
+
     private class DayDataClass {
 
         DayDataClass(String input) {
 
             // Parse the input string for one line into some object
         }
-    }
-
-    public static void main(String[] args) {
-        new TemplateDay().solve();
     }
 
     /** List of objects created by parsing the input */
